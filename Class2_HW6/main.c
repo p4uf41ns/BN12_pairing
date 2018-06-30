@@ -3,7 +3,7 @@
 /*============================================================================*/
 /* main                                                                       */
 /*============================================================================*/
-void main(){
+int main(void){
     BN12_init();
     BN12_print_parameters();
     
@@ -21,6 +21,7 @@ void main(){
     compare_pairings();   
     
     BN12_clear();
+    return 0;
 }
 
 /*============================================================================*/
@@ -3349,7 +3350,6 @@ void EFp12_G1_SCM_2split_JSF(EFp12 *ANS,EFp12 *P,mpz_t scalar){
 	//JSF
 	int JSF_length;
 	int JSF_binary[2][loop_length+1];
-	char check[5];
 	for(i=0; i<loop_length; i++){
 		JSF_binary[0][i]=0;
 		JSF_binary[1][i]=0;
@@ -3565,7 +3565,6 @@ void EFp12_G2_SCM_2split_JSF(EFp12 *ANS,EFp12 *Q,mpz_t scalar){
 	//JSF
 	int JSF_length;
 	int JSF_binary[2][loop_length+1];
-	char check[5];
 	for(i=0; i<loop_length; i++){
 		JSF_binary[0][i]=0;
 		JSF_binary[1][i]=0;
@@ -3914,7 +3913,6 @@ void Fp12_G3_EXP_2split_JSF(Fp12 *ANS,Fp12 *A,mpz_t scalar){
 	//JSF
 	int JSF_length;
 	int JSF_binary[2][loop_length+1];
-	char check[5];
 	for(i=0; i<loop_length; i++){
 		JSF_binary[0][i]=0;
 		JSF_binary[1][i]=0;
@@ -4344,7 +4342,6 @@ void set_basis(){
 }
 
 void set_frobenius_constant(){
-    int i;
 	Fp2 tmp1,tmp2,tmp3;
 	Fp2_init(&tmp1);
 	Fp2_init(&tmp2);
@@ -4991,7 +4988,7 @@ void test_plain_ate_pairing(){
     printf("\n\n");
     
     printf("bilinear test\n");
-    if(Fp12_cmp(&test1,&test2)==0,Fp12_cmp(&test1,&test3)==0){
+    if(Fp12_cmp(&test1,&test2)==0 && Fp12_cmp(&test1,&test3)==0){
         printf("success\n\n");
     }else{
         printf("failed\n\n");
@@ -5085,7 +5082,7 @@ void test_opt_ate_pairing(){
     printf("\n\n");
     
     printf("bilinear test\n");
-    if(Fp12_cmp(&test1,&test2)==0,Fp12_cmp(&test1,&test3)==0){
+    if(Fp12_cmp(&test1,&test2)==0 && Fp12_cmp(&test1,&test3)==0){
         printf("success\n\n");
     }else{
         printf("failed\n\n");
@@ -5179,7 +5176,7 @@ void test_x_ate_pairing(){
     printf("\n\n");
     
     printf("bilinear test\n");
-    if(Fp12_cmp(&test1,&test2)==0,Fp12_cmp(&test1,&test3)==0){
+    if(Fp12_cmp(&test1,&test2)==0 && Fp12_cmp(&test1,&test3)==0){
         printf("success\n\n");
     }else{
         printf("failed\n\n");
